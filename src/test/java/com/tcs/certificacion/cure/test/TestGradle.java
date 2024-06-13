@@ -2,6 +2,7 @@ package com.tcs.certificacion.cure.test;
 
 import static org.junit.Assert.*;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,18 +26,14 @@ public class TestGradle {
 
 	@Before
 	public void iniciar() {
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\Diego\\Desktop\\chromedriver\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver","C:\\Users\\Diego\\Desktop\\chromedriver\\chromedriver.exe");
 
-		 //Incognito
-		 DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		 //incognito
-		 ChromeOptions options = new ChromeOptions();
-		 //indognito
-		 options.addArguments("incognito");
-		 //imcognito
-		 capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--start-maximized","--disable-infobars","--incognito","--always-authorize-plugins","--disable-web-security","--allow-running-insecure-content","--ignore-certificate-errors");
 
-		driver = new ChromeDriver(capabilities);
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver(options);
 
 		// js = (JavascriptExecutor) driver;
 		driver.manage().window().maximize();
@@ -67,7 +64,7 @@ public class TestGradle {
 		makeappointment.clickbtnBookAppointment();
 		
 		
-		while(!makeappointment.textolblAnoMes().equals("July 2019"))
+		while(!makeappointment.textolblAnoMes().equals("July 2024"))
 		{
 			makeappointment.clickBtnNext();
 		}
@@ -77,6 +74,7 @@ public class TestGradle {
 		makeappointment.clickbtnBookAppointment();
 		
 		assertEquals("Appointment Confirmation", appointmentConfirmation.textoAppointmentConfirmation());
+
 	}
 
 	@After

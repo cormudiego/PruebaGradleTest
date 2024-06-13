@@ -7,16 +7,17 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 dependencies {
-              
-    compile 'junit:junit:4.12'
-    compile 'org.assertj:assertj-core:1.7.0'
-    compile'org.slf4j:slf4j-simple:1.7.7'
-    
-    compile 'net.serenity-bdd:serenity-core:1.9.9'
-    compile 'net.serenity-bdd:serenity-junit:1.9.9'
-    compile 'net.serenity-bdd:serenity-cucumber:1.9.5'
-    compile 'net.serenity-bdd:serenity-screenplay:1.9.9'
-    compile 'net.serenity-bdd:serenity-screenplay-webdriver:1.9.9'
+
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.assertj:assertj-core:3.25.3'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.7'
+
+    testImplementation 'net.serenity-bdd:serenity-core:4.1.17'
+    testImplementation 'net.serenity-bdd:serenity-junit:4.1.17'
+    implementation 'net.serenity-bdd:serenity-cucumber:4.1.17'
+    testImplementation 'net.serenity-bdd:serenity-screenplay:4.1.17'
+    testImplementation 'net.serenity-bdd:serenity-screenplay-webdriver:4.1.17'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.7.0'
 }
 gradle.startParameter.continueOnFailure = true 
 

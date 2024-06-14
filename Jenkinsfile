@@ -12,7 +12,7 @@ stages{
               //Agarrar el repo en el que esta el codigo que necesitamos correr
               checkout scmGit(branches: [[name: 'main']],userRemoteConfigs: [[url: 'https://github.com/cormudiego/PruebaGradleTest.git']])
               //Ejecutar la tarea clean de gradle
-              bat 'gradlew.bat clean'
+              bat 'gradle clean'
           }
       }
       stage("Imprimir cosas"){

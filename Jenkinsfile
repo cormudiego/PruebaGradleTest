@@ -10,7 +10,8 @@ stages{
       stage("Tareas de limpieza"){
           steps{
               //Agarrar el repo en el que esta el codigo que necesitamos correr
-              git 'https://github.com/cormudiego/PruebaGradleTest.git'
+              git branch: 'main',
+              url: 'https://github.com/cormudiego/PruebaGradleTest.git'
               //Ejecutar la tarea clean de gradle
               sh 'gradle clean'
           }

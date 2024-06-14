@@ -10,8 +10,7 @@ stages{
       stage("Tareas de limpieza"){
           steps{
               //Agarrar el repo en el que esta el codigo que necesitamos correr
-              git branch: 'main',
-              url: 'https://github.com/cormudiego/PruebaGradleTest.git'
+              checkout scmGit(branches: [[name: 'main']],userRemoteConfigs: [[url: 'https://github.com/cormudiego/PruebaGradleTest.git']])
               //Ejecutar la tarea clean de gradle
               sh 'gradle clean'
           }
@@ -23,3 +22,4 @@ stages{
       }
 }
 }
+
